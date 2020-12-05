@@ -5,8 +5,6 @@ import 'dart:convert';
 import 'package:nigg_2/models/global.dart';
 import 'package:random_color/random_color.dart';
 
-
-
 class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
@@ -19,19 +17,18 @@ class _MyAppState extends State<MyApp> {
   List<Quote> quotes = [];
 
   @override
-
   void initState() {
     loadData();
-
   }
+
   loadData() async {
     var response = await http.get(url, headers: {"Aceept": "application/json"});
     if (response.statusCode == 200) {
       String responeBody = response.body;
       var jsonBody = json.decode(responeBody);
       for (var data in jsonBody) {
-        quotes.add(new Quote(
-            data['quotation'], data['author'], data['number']));
+        quotes
+            .add(new Quote(data['quotation'], data['author'], data['number']));
       }
       setState(() {});
       quotes.forEach((someData) => print("Name : ${someData.number}"));
@@ -88,11 +85,10 @@ class _MyAppState extends State<MyApp> {
                     padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color:_randomColor.randomColor(
+                      color: _randomColor.randomColor(
                           colorHue: ColorHue.multiple(
                               colorHues: [ColorHue.purple, ColorHue.blue]),
-                          colorBrightness: ColorBrightness.light
-                      ) ,
+                          colorBrightness: ColorBrightness.light),
                     ),
                     width: 100,
                     margin: EdgeInsets.only(right: 10),
@@ -112,87 +108,81 @@ class _MyAppState extends State<MyApp> {
                 },
               ),
             ),
-
-                Container(
-                  padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-                  margin: EdgeInsets.only(bottom: 10),
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.library_books,
-                        color: Colors.blue,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        'Short Verses',
-                        style: header,
-                      )
-                    ],
+            Container(
+              padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+              margin: EdgeInsets.only(bottom: 10),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.library_books,
+                    color: Colors.blue,
                   ),
-                ),
-                Container(
-                  padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
-                  height: MediaQuery
-                      .of(context)
-                      .size
-                      .height,
-                  width: MediaQuery
-                      .of(context)
-                      .size
-                      .width,
-                  child: ListView.builder(
-                    itemCount: quotes.length,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        padding: EdgeInsets.fromLTRB(10, 20, 10, 5),
-                        margin: EdgeInsets.only(
-                          bottom: 20,
-                        ),
-                        decoration: BoxDecoration(
-                          color: _randomColor.randomColor(
-                              colorHue: ColorHue.multiple(
-                                  colorHues: [ColorHue.purple, ColorHue.blue])),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    'Short Verses',
+                    style: header,
+                  )
+                ],
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              child: ListView.builder(
+                itemCount: quotes.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    padding: EdgeInsets.fromLTRB(10, 20, 10, 5),
+                    margin: EdgeInsets.only(
+                      bottom: 20,
+                    ),
+                    decoration: BoxDecoration(
+                      color: _randomColor.randomColor(
+                          colorHue: ColorHue.multiple(
+                              colorHues: [ColorHue.purple, ColorHue.blue]),
+                          colorBrightness: ColorBrightness.light),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
                           children: [
-                            Row(
-                              children: [
-                                Icon(Icons.library_books),
-                                Spacer(),
-                                Text(
-                                  '${quotes[index].author}' +
-                                      '' +
-                                      '${quotes[index].number.toString()}',
-                                  style: subtexts,
-                                ),
-                                Spacer(),
-                                Icon(Icons.keyboard_arrow_right)
-                              ],
-                            ),
-                            Divider(),
+                            Icon(Icons.library_books),
+                            Spacer(),
                             Text(
-                              '${quotes[index].quotation}',
+                              '${quotes[index].author}' +
+                                  '' +
+                                  '${quotes[index].number.toString()}',
                               style: subtexts,
                             ),
-                            Divider(),
-                            Row(
-                              children: [
-                                Icon(Icons.favorite_border),
-                              ],
-                            )
+                            Spacer(),
+                            Icon(Icons.keyboard_arrow_right)
                           ],
                         ),
-                      );
-                    },
-                  ),
-                )
-              ],
-            ),
-          ),
-  );
+                        Divider(),
+                        Text(
+                          '${quotes[index].quotation}',
+                          style: subtexts,
+                        ),
+                        Divider(),
+                        Row(
+                          children: [
+                            Icon(Icons.favorite_border),
+                          ],
+                        )
+                      ],
+                    ),
+                  );
+                },
+              ),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
