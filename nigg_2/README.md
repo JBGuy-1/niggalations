@@ -1,6 +1,7 @@
 # nigg_2
 
-A new Flutter project.
+A bible app for the hood.
+
 
 ## Getting Started
 
