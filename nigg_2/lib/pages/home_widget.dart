@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nigg_2/pages/pages.dart';
 import 'package:nigg_2/pages/hompage.dart';
+import 'package:nigg_2/pages/quotepage.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -9,7 +10,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _currentIndex = 0;
-  final List<Widget> _children = [MyApp(), Explorepage(), Favpage()];
+  final List<Widget> _children = [MyApp(), Quotepage(), Favpage()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
