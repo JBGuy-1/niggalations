@@ -48,8 +48,7 @@ class _MyAppState extends State<MyApp> {
             ),
             Container(
               padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-              height: 150,
-              margin: EdgeInsets.only(bottom: 20),
+              height: 70,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: topquotes.length,
@@ -57,13 +56,13 @@ class _MyAppState extends State<MyApp> {
                   return Container(
                     padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(5),
                       color: _randomColor.randomColor(
                           colorHue: ColorHue.multiple(
                               colorHues: [ColorHue.purple, ColorHue.blue]),
                           colorBrightness: ColorBrightness.light),
                     ),
-                    width: 100,
+                    width: 150,
                     margin: EdgeInsets.only(right: 10),
                     child: Column(children: [
                       Wrap(children: [

@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:random_color/random_color.dart';
 import 'package:nigg_2/models/global.dart';
 import 'package:nigg_2/pages/quotepage.dart';
+import 'package:nigg_2/models/heart.dart';
 
 class Quotelist extends StatefulWidget {
   @override
@@ -64,10 +65,12 @@ class _QuotelistState extends State<Quotelist> {
           bottom: 20,
         ),
         decoration: BoxDecoration(
-          color: _randomColor.randomColor(
-              colorHue: ColorHue.multiple(
-                  colorHues: [ColorHue.purple, ColorHue.blue]),
-              colorBrightness: ColorBrightness.light),
+          color: Colors.transparent,
+          border: Border.all(
+              color: _randomColor.randomColor(
+                  colorHue: ColorHue.multiple(
+                      colorHues: [ColorHue.purple, ColorHue.blue]),
+                  colorBrightness: ColorBrightness.light)),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Column(
@@ -92,8 +95,9 @@ class _QuotelistState extends State<Quotelist> {
             ),
             Divider(),
             Row(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Icon(Icons.favorite_border),
+                Heart(),
               ],
             )
           ],

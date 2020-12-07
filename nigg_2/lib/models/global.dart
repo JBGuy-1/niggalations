@@ -25,5 +25,5 @@ TextStyle dtitle = TextStyle(
 TextStyle dquote = TextStyle(
   color: Colors.white,
   fontSize: 30,
-  fontWeight: FontWeight.bold,
+  fontWeight: FontWeight.w400,
 );

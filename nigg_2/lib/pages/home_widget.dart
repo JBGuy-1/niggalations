@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nigg_2/pages/pages.dart';
 import 'package:nigg_2/pages/hompage.dart';
-import 'package:nigg_2/pages/quotepage.dart';
+import 'package:nigg_2/pages/bible.dart';
 
 class Home extends StatefulWidget {
   @override

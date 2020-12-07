@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:nigg_2/models/heart.dart';
 import 'package:nigg_2/models/quotecard.dart';
 import 'package:nigg_2/models/global.dart';
 import 'package:random_color/random_color.dart';
@@ -44,7 +44,7 @@ class Quotepage extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 150.0, left: 25, right: 25),
+              padding: EdgeInsets.only(top: 100.0, left: 25, right: 25),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -59,12 +59,29 @@ class Quotepage extends StatelessWidget {
                     quote.author + ' - ' + quote.number,
                     style: dtitle,
                   ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                          color: Colors.grey[100],
+                          boxShadow: [
+                            BoxShadow(
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                              offset: Offset(2, 0),
+                              color: Colors.grey.withOpacity(0.5),
+                            ),
+                          ],
+                          borderRadius: BorderRadius.all(Radius.circular(50))),
+                      child: Center(
+                        child: Heart(),
+                      )),
                 ],
               ),
             ),
-            Positioned(
-              child: Container(),
-            )
           ],
         ),
       ),
