@@ -10,7 +10,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _currentIndex = 0;
-  final List<Widget> _children = [MyApp(), Quotepage(), Favpage()];
+  final List<Widget> _children = [MyApp(), Explorepage(), Favpage()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
