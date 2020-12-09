@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nigg_2/models/heart.dart';
-import 'package:nigg_2/models/quotecard.dart';
 import 'package:nigg_2/models/global.dart';
-import 'package:random_color/random_color.dart';
+import 'package:nigg_2/models/quotecard.dart';
 
 class Quotepage extends StatelessWidget {
   final Quote quote;
@@ -10,82 +8,58 @@ class Quotepage extends StatelessWidget {
   Quotepage({@required this.quote});
   @override
   Widget build(BuildContext context) {
-    RandomColor _randomColor = RandomColor();
-    return Material(
-      child: SafeArea(
-        child: Stack(
-          children: <Widget>[
-            Positioned(
-              bottom: MediaQuery.of(context).size.height / 3,
-              child: Container(
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  color: _randomColor.randomColor(
-                      colorHue: ColorHue.multiple(
-                          colorHues: [ColorHue.purple, ColorHue.blue]),
-                      colorBrightness: ColorBrightness.light),
+    return Scaffold(
+        body: SafeArea(
+      child: Stack(
+        children: [
+          Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(color: Colors.purpleAccent),
+          ),
+          Positioned(
+            top: MediaQuery.of(context).size.height - 530,
+            bottom: MediaQuery.of(context).size.height - 550,
+            child: Container(
+              margin: EdgeInsets.only(
+                left: 15,
+              ),
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width - 30,
+              decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(25),
-                    bottomRight: Radius.circular(25),
+                    topLeft: Radius.circular(20.0),
+                    topRight: Radius.circular(20.0),
+                    bottomLeft: Radius.circular(20.0),
+                    bottomRight: Radius.circular(20.0),
                   ),
-                ),
-              ),
-            ),
-            Align(
-              alignment: Alignment.topLeft,
-              child: IconButton(
-                icon: Icon(
-                  Icons.keyboard_arrow_left,
                   color: Colors.white,
-                  size: 30,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey,
+                      blurRadius: 5.0,
+                    ),
+                  ]),
+              padding: EdgeInsets.fromLTRB(20, 20, 10, 0),
+              child: Wrap(children: [
+                Text(
+                  quote.quotation,
+                  style: dquote,
                 ),
-                onPressed: () => Navigator.pop(context),
-              ),
+              ]),
             ),
-            Padding(
-              padding: EdgeInsets.only(top: 100.0, left: 25, right: 25),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    quote.quotation,
-                    style: dquote,
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Text(
-                    quote.author + ' - ' + quote.number,
-                    style: dtitle,
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                          color: Colors.grey[100],
-                          boxShadow: [
-                            BoxShadow(
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset: Offset(2, 0),
-                              color: Colors.grey.withOpacity(0.5),
-                            ),
-                          ],
-                          borderRadius: BorderRadius.all(Radius.circular(50))),
-                      child: Center(
-                        child: Heart(),
-                      )),
-                ],
-              ),
+          ),
+          Positioned(
+            top: (MediaQuery.of(context).size.height) - 150.0,
+            left: (MediaQuery.of(context).size.width / 2) - 60.0,
+            child: Text(
+              quote.author + ' - ' + quote.number,
+              style: dtitle,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
-    );
+    ));
   }
 }
 

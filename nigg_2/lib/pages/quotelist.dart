@@ -46,7 +46,6 @@ class _QuotelistState extends State<Quotelist> {
     });
   }
 
-  RandomColor _randomColor = RandomColor();
   Widget _buildTile(Quote quote) {
     return InkWell(
       onTap: () {
@@ -66,11 +65,7 @@ class _QuotelistState extends State<Quotelist> {
         ),
         decoration: BoxDecoration(
           color: Colors.transparent,
-          border: Border.all(
-              color: _randomColor.randomColor(
-                  colorHue: ColorHue.multiple(
-                      colorHues: [ColorHue.purple, ColorHue.blue]),
-                  colorBrightness: ColorBrightness.light)),
+          border: Border.all(color: Colors.purpleAccent),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Column(
@@ -108,11 +103,20 @@ class _QuotelistState extends State<Quotelist> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        key: _listKey,
-        itemCount: _quoteTiles.length,
-        itemBuilder: (context, index) {
-          return _quoteTiles[index];
-        });
+    var screenheight = MediaQuery.of(context).size.height;
+    return quotes.length == 0
+        ? Center(
+            child: Text('Hoolup Nigga...'),
+          )
+        : Container(
+            padding: EdgeInsets.only(left: 15.0, right: 15.0, top: 10.0),
+            height: screenheight,
+            child: ListView.builder(
+                key: _listKey,
+                itemCount: _quoteTiles.length,
+                itemBuilder: (context, index) {
+                  return _quoteTiles[index];
+                }),
+          );
   }
 }
