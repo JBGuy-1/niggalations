@@ -1,7 +1,4 @@
-# nigg_2
-
-A bible app for the hood.
-
+# Flutter Item Stack ListView
 
 ## Getting Started
 

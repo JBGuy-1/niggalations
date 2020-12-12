@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 TextStyle titlestyle = TextStyle(
   fontFamily: 'barty',
   fontSize: 30,
-  color: Colors.black,
+  color: Colors.white,
 );
+
 TextStyle header = TextStyle(
   fontFamily: 'sfui',
   fontSize: 18,
@@ -18,6 +19,12 @@ TextStyle subtexts = TextStyle(
 TextStyle dtitle = TextStyle(
   fontFamily: 'sfui',
   //color: Colors.white,
+  fontWeight: FontWeight.w300,
+  fontSize: 20,
+);
+TextStyle loading = TextStyle(
+  fontFamily: 'sfui',
+  color: Colors.white,
   fontWeight: FontWeight.w300,
   fontSize: 20,
 );
